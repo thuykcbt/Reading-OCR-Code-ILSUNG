@@ -40,10 +40,12 @@ namespace Design_Form
         public Setting()
         {
             InitializeComponent();
+            inital_job();
             inital_Dislay_Halcon();
             Update_TotalCame();
             inital_user_none();
             inital_usercontrol();
+           
         }
         ParaLine paraline;
         Result_FindLine result_FindLine;
@@ -300,6 +302,38 @@ namespace Design_Form
                 
                     
             }
+        }
+        private void inital_job()
+        {
+
+            string debugFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string name_file = "thuy.job";
+            string file_path = Path.Combine(debugFolder, name_file);
+            if (!File.Exists(name_file))
+            {
+                wirte_config(file_path);
+            }
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            };
+
+            string json = File.ReadAllText(name_file);
+
+            Job_Model.Statatic_Model.model_run = JsonConvert.DeserializeObject<Model>(json, settings);
+        }
+        public void wirte_config(string file_path)
+        {
+            Job_Model.Model config_Machine = new Job_Model.Model();
+
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented
+            };
+
+            string json = JsonConvert.SerializeObject(config_Machine, settings);
+            File.WriteAllText(file_path, json);
         }
         static string ExtractFromLastSymbol(string input, char symbol)
         {

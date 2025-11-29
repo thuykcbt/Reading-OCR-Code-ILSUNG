@@ -1,4 +1,5 @@
-﻿using DevExpress.Data.Linq.Helpers;
+﻿using Design_Form.UserForm;
+using DevExpress.Data.Linq.Helpers;
 //using DevExpress.Drawing;
 //using DevExpress.Drawing.Internal.Fonts.Interop;
 using DevExpress.Internal.WinApi.Windows.UI.Notifications;
@@ -10,6 +11,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting.DataNodes;
 using DevExpress.XtraSpellChecker.Parser;
 using HalconDotNet;
+using MathNet.Numerics.Distributions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Windows.Input;
 using static DevExpress.Utils.Drawing.Helpers.NativeMethods;
 using static DevExpress.Xpo.DB.DataStoreLongrunnersWatch;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -182,7 +185,11 @@ namespace Design_Form.Job_Model
                 tool.Excute(hWindow, ho_Image);
                 //  ho_Image = Job_Model.Statatic_Model.Input_Image[tool.camera_index, tool.job_index, 0];
                 if (!tool.Result_Tool)
+                {
                     result_Image = "NG";
+                    break;
+                }
+                    
             }
           
         }
@@ -796,6 +803,7 @@ namespace Design_Form.Job_Model
         public double master_y { get; set; } = 0;
         public double master_x { get; set; } = 0;
         public double master_phi { get; set; } = 0;
+        public double phi {  get; set; } = 0;
         public FixtureTool() : base("Fixture") { }
         public override void Excute(HWindow hWindow, HObject ho_Image)
         {
@@ -812,6 +820,7 @@ namespace Design_Form.Job_Model
                 double x_cr = shapeModelTool.X_Master[0];
                 double y_cr = shapeModelTool.Y_Master[0];
                 double phi_cr = shapeModelTool.Phi_Master[0];
+                phi = phi_cr;
                 Align_Tool(out Statatic_Model.hommat2D[camera_index, job_index, tool_index], x_cr, y_cr, phi_cr);
 
             }
@@ -1733,6 +1742,7 @@ namespace Design_Form.Job_Model
         public int min_leng_code { get; set; } = 20;
         public int Blur { get; set; } = 1;
         public bool Barcode2D { get; set; } = true;
+        public string barcode { get; set; }
         // resule code
         public Barcode barcodes = new Barcode();    
         public Barcode_2D() : base("Barcode_2D") { }
@@ -1755,6 +1765,7 @@ namespace Design_Form.Job_Model
                 HOperatorSet.GenEmptyObj(out image_Reducer);
                 HOperatorSet.GenEmptyObj(out ho_SymbolXLDs);
                 Result_Tool = false;
+                barcode = "";
                 // dATACODE = new DATACODE();
                 // HRegion ROI = new HRegion();
                 // ROI.GenRectangle2(Y1, X1, Phi, X2, Y2);
@@ -1850,6 +1861,7 @@ namespace Design_Form.Job_Model
                     barcodes.data_code = hv_DecodedDataStrings;
                     Job_Model.Statatic_Model.barcode = hv_DecodedDataStrings;
                     barcodes.format_code = Codetype;
+                    barcode = hv_DecodedDataStrings;
                 }
                 //   ho_Image.Dispose();
                 ho_SymbolXLDs.Dispose();
@@ -2191,6 +2203,7 @@ namespace Design_Form.Job_Model
         public int max_Height { get; set; } = 1000;
         public int min_Height { get; set; } = 10;
         public bool Partition { get; set; } = false;
+        public string result_text { get; set; }
         public OCR_Tool() : base("OCR_Tool") { }
        
         public override void Excute(HWindow hWindow, HObject ho_Image)
@@ -2205,10 +2218,14 @@ namespace Design_Form.Job_Model
             HObject ho_DarkPixels;
             HObject ho_ConnectedRegions, ho_SelectedRegions, ho_RegionUnion;
             HObject ho_RegionDilation, ho_Skeleton, ho_Errors, ho_Scratches;
+            HObject Roate_Obj;
             HObject ho_Dots;
             HObject ho_Reg;
             HObject out_bitmap;
+            HObject display_hh;
             HOperatorSet.GenEmptyObj(out ho_DarkPixels);
+            HOperatorSet.GenEmptyObj(out display_hh);
+            HOperatorSet.GenEmptyObj(out Roate_Obj);
             HOperatorSet.GenEmptyObj(out ho_ConnectedRegions);
             HOperatorSet.GenEmptyObj(out ho_SelectedRegions);
             HOperatorSet.GenEmptyObj(out ho_RegionUnion);
@@ -2219,7 +2236,11 @@ namespace Design_Form.Job_Model
             HOperatorSet.GenEmptyObj(out ho_Dots);
             HOperatorSet.GenEmptyObj(out ho_Reg);
             HOperatorSet.GenEmptyObj(out out_bitmap);
+            result_text = "";
             Result_Tool = false;
+            FixtureTool fixture = (FixtureTool)Statatic_Model.model_run.Cameras[camera_index].Jobs[job_index].Images[image_index].Tools[index_follow];
+            double deltal_phi = fixture.master_phi -fixture.phi;
+            deltal_phi = (deltal_phi * 180)/3.14;
 
 
             // HOperatorSet.DoOcrMultiClassCnn(ho_Chacracters, ho_Image, hv_OCRHandle, out hv_Class, out hv_Confidence);
@@ -2227,12 +2248,17 @@ namespace Design_Form.Job_Model
             {
 
                 // Lấy vùng ROI
+              
                 align_Roi(index_follow, 0, out ho_Reg);
+               
                 HOperatorSet.ReduceDomain(ho_Image, ho_Reg, out ho_Image);
+                HOperatorSet.Connection(ho_Image, out display_hh);
+                HOperatorSet.CropDomain(ho_Image, out Roate_Obj);
+                HOperatorSet.RotateImage(Roate_Obj, out Roate_Obj, deltal_phi, "constant");
                 if (stepbystep == true)
                 {
                     HOperatorSet.ClearWindow(hWindow);
-                    HOperatorSet.DispObj(ho_Image, hWindow);
+                    HOperatorSet.DispObj(Roate_Obj, hWindow);
                     MessageBox.Show("ho_Imagecrop");
                 }
                 ho_DarkPixels.Dispose();
@@ -2248,6 +2274,7 @@ namespace Design_Form.Job_Model
                 HOperatorSet.GenEmptyObj(out ho_ero);
                 ho_ero.Dispose();
                 HOperatorSet.ErosionRectangle1(ho_DarkPixels, out ho_ero, Erosion_W, Erosion_H);
+               // HOperatorSet.RotateImage(ho_Image, out ho_ero, deltal_phi, "constant");
                 if (stepbystep == true)
                 {
                     HOperatorSet.ClearWindow(hWindow);
@@ -2302,11 +2329,12 @@ namespace Design_Form.Job_Model
                 HOperatorSet.GenEmptyObj(out ho_ObjectSelected);
                 HTuple hv_TextModel;
                 HOperatorSet.CreateTextModelReader("auto", code_type, out hv_TextModel); //Universal_0-9A-Z_Rej
-                HOperatorSet.SetTextModelParam(hv_TextModel, "dot_print", "true");
+                HOperatorSet.SetTextModelParam(hv_TextModel, "dot_print", "false");
 
                 HOperatorSet.SetTextModelParam(hv_TextModel, "min_contrast", min_contract);
+               // HOperatorSet.SetTextModelParam(hv_TextModel,)
                 HTuple hv_TextResultID;
-                HOperatorSet.FindText(ho_Image, hv_TextModel, out hv_TextResultID);
+                HOperatorSet.FindText(Roate_Obj, hv_TextModel, out hv_TextResultID);
                 HObject ho_Characters;
                 HOperatorSet.GetTextObject(out ho_Characters, hv_TextResultID, "all_lines");
 
@@ -2316,7 +2344,7 @@ namespace Design_Form.Job_Model
                 HOperatorSet.SetLineWidth(hWindow, 2);
                 HOperatorSet.DispObj(ho_SortedRegions, hWindow);
                 HOperatorSet.SetColored(hWindow, 12);
-                HOperatorSet.DispObj(ho_Characters, hWindow);
+              //  HOperatorSet.DispObj(ho_Characters, hWindow);
                 HOperatorSet.SetDraw(hWindow, "margin");
                 using (HDevDisposeHelper dh = new HDevDisposeHelper())
                 {
@@ -2325,6 +2353,7 @@ namespace Design_Form.Job_Model
                         12, 12, "black", "true");
                     if (hv_Class.Length > 0)
                         Result_Tool = true;
+                        result_text = hv_Class.TupleSum();
                 }
 
 

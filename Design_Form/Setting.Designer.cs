@@ -1306,7 +1306,7 @@
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(12, 56);
+            this.simpleButton1.Location = new System.Drawing.Point(12, 186);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(227, 36);
@@ -1320,7 +1320,7 @@
             this.simple_SaveAs.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simple_SaveAs.Appearance.Options.UseFont = true;
             this.simple_SaveAs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simple_SaveAs.ImageOptions.SvgImage")));
-            this.simple_SaveAs.Location = new System.Drawing.Point(12, 8);
+            this.simple_SaveAs.Location = new System.Drawing.Point(12, 138);
             this.simple_SaveAs.Margin = new System.Windows.Forms.Padding(4);
             this.simple_SaveAs.Name = "simple_SaveAs";
             this.simple_SaveAs.Size = new System.Drawing.Size(227, 44);
@@ -1334,7 +1334,7 @@
             this.TrialRun.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrialRun.Appearance.Options.UseFont = true;
             this.TrialRun.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("TrialRun.ImageOptions.SvgImage")));
-            this.TrialRun.Location = new System.Drawing.Point(12, 192);
+            this.TrialRun.Location = new System.Drawing.Point(12, 322);
             this.TrialRun.Margin = new System.Windows.Forms.Padding(4);
             this.TrialRun.Name = "TrialRun";
             this.TrialRun.Size = new System.Drawing.Size(227, 44);
@@ -1347,7 +1347,7 @@
             // 
             this.cbbCam.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbCam.FormattingEnabled = true;
-            this.cbbCam.Location = new System.Drawing.Point(12, -118);
+            this.cbbCam.Location = new System.Drawing.Point(12, 12);
             this.cbbCam.Margin = new System.Windows.Forms.Padding(4);
             this.cbbCam.Name = "cbbCam";
             this.cbbCam.Size = new System.Drawing.Size(227, 32);
@@ -1360,7 +1360,7 @@
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton5.Appearance.Options.UseFont = true;
             this.simpleButton5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton5.ImageOptions.SvgImage")));
-            this.simpleButton5.Location = new System.Drawing.Point(12, 144);
+            this.simpleButton5.Location = new System.Drawing.Point(12, 274);
             this.simpleButton5.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(227, 44);
@@ -1374,7 +1374,7 @@
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton4.Appearance.Options.UseFont = true;
             this.simpleButton4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton4.ImageOptions.SvgImage")));
-            this.simpleButton4.Location = new System.Drawing.Point(12, 96);
+            this.simpleButton4.Location = new System.Drawing.Point(12, 226);
             this.simpleButton4.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(227, 44);
@@ -1388,7 +1388,7 @@
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
-            this.simpleButton3.Location = new System.Drawing.Point(12, -40);
+            this.simpleButton3.Location = new System.Drawing.Point(12, 90);
             this.simpleButton3.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(227, 44);
@@ -1402,7 +1402,7 @@
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(12, -88);
+            this.simpleButton2.Location = new System.Drawing.Point(12, 42);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(227, 44);
@@ -2012,12 +2012,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1938, 573);
+            this.Controls.Add(this.dockPanel6);
             this.Controls.Add(this.panelContainer1);
             this.Controls.Add(this.DockSetting);
             this.Controls.Add(this.dockTool);
             this.Controls.Add(this.panelContainer2);
             this.Controls.Add(this.dockPanel5);
-            this.Controls.Add(this.dockPanel6);
             this.Controls.Add(this.dockMainCame);
             this.Controls.Add(this.dockPanel2);
             this.Controls.Add(this.barDockControlLeft);

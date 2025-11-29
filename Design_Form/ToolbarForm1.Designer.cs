@@ -33,9 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisionSoftware));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barPLC_Connect = new DevExpress.XtraBars.BarStaticItem();
             this.bar_Camera1 = new DevExpress.XtraBars.BarStaticItem();
-            this.bar_Camera2 = new DevExpress.XtraBars.BarStaticItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btn_Home = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonSetting = new DevExpress.XtraBars.BarButtonItem();
@@ -51,9 +49,11 @@
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barPLC_Connect = new DevExpress.XtraBars.BarStaticItem();
             this.barPLC_Form = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.bar_Cam2 = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_Camera2 = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
@@ -114,16 +114,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bar_Camera1)});
             this.bar1.Text = "Tools";
             // 
-            // barPLC_Connect
-            // 
-            this.barPLC_Connect.Caption = "PLC Connected";
-            this.barPLC_Connect.Id = 10;
-            this.barPLC_Connect.ImageOptions.SvgImage = global::Design_Form.Properties.Resources.failure;
-            this.barPLC_Connect.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barPLC_Connect.ItemAppearance.Normal.Options.UseFont = true;
-            this.barPLC_Connect.Name = "barPLC_Connect";
-            this.barPLC_Connect.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // bar_Camera1
             // 
             this.bar_Camera1.Caption = "Cam1 Connected";
@@ -137,16 +127,6 @@
             this.bar_Camera1.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.bar_Camera1.Name = "bar_Camera1";
             this.bar_Camera1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // bar_Camera2
-            // 
-            this.bar_Camera2.Caption = "Cam2 Connected";
-            this.bar_Camera2.Id = 16;
-            this.bar_Camera2.ImageOptions.SvgImage = global::Design_Form.Properties.Resources.failure;
-            this.bar_Camera2.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bar_Camera2.ItemAppearance.Normal.Options.UseFont = true;
-            this.bar_Camera2.Name = "bar_Camera2";
-            this.bar_Camera2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // bar2
             // 
@@ -217,16 +197,16 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlTop.Size = new System.Drawing.Size(1940, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1040, 30);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 1032);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 532);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1940, 30);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1040, 30);
             // 
             // barDockControlLeft
             // 
@@ -235,16 +215,16 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 1002);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1940, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1040, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 1002);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
             // 
             // barSubItem1
             // 
@@ -281,6 +261,16 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.Caption;
             // 
+            // barPLC_Connect
+            // 
+            this.barPLC_Connect.Caption = "PLC Connected";
+            this.barPLC_Connect.Id = 10;
+            this.barPLC_Connect.ImageOptions.SvgImage = global::Design_Form.Properties.Resources.failure;
+            this.barPLC_Connect.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barPLC_Connect.ItemAppearance.Normal.Options.UseFont = true;
+            this.barPLC_Connect.Name = "barPLC_Connect";
+            this.barPLC_Connect.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // barPLC_Form
             // 
             this.barPLC_Form.Caption = "Setting_PLC";
@@ -308,6 +298,16 @@
             this.bar_Cam2.Name = "bar_Cam2";
             this.bar_Cam2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
+            // bar_Camera2
+            // 
+            this.bar_Camera2.Caption = "Cam2 Connected";
+            this.bar_Camera2.Id = 16;
+            this.bar_Camera2.ImageOptions.SvgImage = global::Design_Form.Properties.Resources.failure;
+            this.bar_Camera2.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bar_Camera2.ItemAppearance.Normal.Options.UseFont = true;
+            this.bar_Camera2.Name = "bar_Camera2";
+            this.bar_Camera2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
@@ -315,7 +315,7 @@
             this.barDockControl1.Location = new System.Drawing.Point(0, 30);
             this.barDockControl1.Manager = this.barManager1;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl1.Size = new System.Drawing.Size(1940, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1040, 0);
             // 
             // barDockControl2
             // 
@@ -324,7 +324,7 @@
             this.barDockControl2.Location = new System.Drawing.Point(0, 30);
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl2.Size = new System.Drawing.Size(1940, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1040, 0);
             // 
             // barDockControl3
             // 
@@ -333,7 +333,7 @@
             this.barDockControl3.Location = new System.Drawing.Point(0, 30);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl3.Size = new System.Drawing.Size(1940, 0);
+            this.barDockControl3.Size = new System.Drawing.Size(1040, 0);
             // 
             // barDockControl4
             // 
@@ -342,7 +342,7 @@
             this.barDockControl4.Location = new System.Drawing.Point(0, 30);
             this.barDockControl4.Manager = this.barManager1;
             this.barDockControl4.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl4.Size = new System.Drawing.Size(1940, 0);
+            this.barDockControl4.Size = new System.Drawing.Size(1040, 0);
             // 
             // barSubItem3
             // 
@@ -358,7 +358,7 @@
             this.Mainpanel.Location = new System.Drawing.Point(0, 30);
             this.Mainpanel.Margin = new System.Windows.Forms.Padding(4);
             this.Mainpanel.Name = "Mainpanel";
-            this.Mainpanel.Size = new System.Drawing.Size(1940, 1002);
+            this.Mainpanel.Size = new System.Drawing.Size(1040, 502);
             this.Mainpanel.TabIndex = 8;
             // 
             // barDockControl5
@@ -368,7 +368,7 @@
             this.barDockControl5.Location = new System.Drawing.Point(0, 0);
             this.barDockControl5.Manager = this.barManager1;
             this.barDockControl5.Margin = new System.Windows.Forms.Padding(4);
-            this.barDockControl5.Size = new System.Drawing.Size(1940, 0);
+            this.barDockControl5.Size = new System.Drawing.Size(1040, 0);
             // 
             // timer1
             // 
@@ -420,7 +420,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1940, 1062);
+            this.ClientSize = new System.Drawing.Size(1040, 562);
             this.Controls.Add(this.Mainpanel);
             this.Controls.Add(this.barDockControl1);
             this.Controls.Add(this.barDockControl2);
